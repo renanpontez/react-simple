@@ -44,13 +44,23 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	import react from 'react;';
-	var ReactDOM = __webpack_require__(32);
+	'use strict';
 
-	var Github = __webpack_require__(178);
+	var _react = __webpack_require__(1);
 
-	ReactDOM.render(React.createElement(Github, null), document.getElementById('app'));
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _Github = __webpack_require__(178);
+
+	var _Github2 = _interopRequireDefault(_Github);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	_reactDom2.default.render(_react2.default.createElement(_Github2.default, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21490,34 +21500,50 @@
 /* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var SearchUser = __webpack_require__(179);
-	var UserProfile = __webpack_require__(206);
+	'use strict';
 
-	var Github = React.createClass({
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _SearchUser = __webpack_require__(179);
+
+	var _SearchUser2 = _interopRequireDefault(_SearchUser);
+
+	var _UserProfile = __webpack_require__(206);
+
+	var _UserProfile2 = _interopRequireDefault(_UserProfile);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Github = _react2.default.createClass({
 	    displayName: 'Github',
 
-	    getInitialState: function () {
+	    getInitialState: function getInitialState() {
 	        return {
 	            user: null,
 	            repos: []
 	        };
 	    },
-	    updateUser: function (user) {
+	    updateUser: function updateUser(user) {
 	        this.setState({ user: user });
 	    },
-	    updateRepos: function (repos) {
+	    updateRepos: function updateRepos(repos) {
 	        this.setState({ repos: repos });
 	    },
-	    render: function () {
-	        return React.createElement(
+	    render: function render() {
+	        return _react2.default.createElement(
 	            'div',
 	            { className: 'container' },
-	            React.createElement(SearchUser, {
+	            _react2.default.createElement(_SearchUser2.default, {
 	                updateUser: this.updateUser,
 	                updateRepos: this.updateRepos
 	            }),
-	            React.createElement(UserProfile, {
+	            _react2.default.createElement(_UserProfile2.default, {
 	                user: this.state.user,
 	                repos: this.state.repos
 	            })
@@ -21525,62 +21551,72 @@
 	    }
 	});
 
-	module.exports = Github;
+	exports.default = Github;
 
 /***/ },
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var GithubUser = __webpack_require__(180);
+	'use strict';
 
-	var SearchUser = React.createClass({
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _GithubUser = __webpack_require__(180);
+
+	var _GithubUser2 = _interopRequireDefault(_GithubUser);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var SearchUser = _react2.default.createClass({
 	    displayName: 'SearchUser',
 
-	    handleSubmit: function (e) {
+	    handleSubmit: function handleSubmit(e) {
+	        var _this = this;
+
 	        e.preventDefault();
 
 	        var username = this.refs.username.value;
 
-	        GithubUser.getByUsername(username).then(function (response) {
-	            this.props.updateUser(response.data);
-	        }.bind(this));
-
-	        GithubUser.getReposByUsername(username).then(function (response) {
-	            this.props.updateRepos(response.data);
-	        }.bind(this));
+	        _GithubUser2.default.getByUsername(username).then(function (response) {
+	            _this.props.updateUser(response.data);
+	        });
+	        _GithubUser2.default.getReposByUsername(username).then(function (response) {
+	            _this.props.updateRepos(response.data);
+	        });
 	    },
-	    render: function () {
-	        return React.createElement(
+	    render: function render() {
+	        return _react2.default.createElement(
 	            'div',
 	            { className: 'jumbotron' },
-	            React.createElement(
+	            _react2.default.createElement(
 	                'h1',
 	                null,
 	                'GitHub Info'
 	            ),
-	            React.createElement(
+	            _react2.default.createElement(
 	                'div',
 	                { className: 'row' },
-	                React.createElement(
+	                _react2.default.createElement(
 	                    'form',
 	                    { onSubmit: this.handleSubmit },
-	                    React.createElement(
+	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'form-group' },
-	                        React.createElement(
+	                        _react2.default.createElement(
 	                            'label',
 	                            null,
 	                            'Username'
 	                        ),
-	                        React.createElement('input', {
+	                        _react2.default.createElement('input', {
 	                            type: 'text',
 	                            ref: 'username',
 	                            className: 'form-control',
 	                            placeholder: 'Ex: matheusml'
 	                        })
 	                    ),
-	                    React.createElement(
+	                    _react2.default.createElement(
 	                        'button',
 	                        {
 	                            type: 'submit',
@@ -21594,8 +21630,8 @@
 	});
 
 	SearchUser.propTypes = {
-	    updateUser: React.PropTypes.func.isRequired,
-	    updateRepos: React.PropTypes.func.isRequired
+	    updateUser: _react2.default.PropTypes.func.isRequired,
+	    updateRepos: _react2.default.PropTypes.func.isRequired
 	};
 
 	module.exports = SearchUser;
@@ -21604,20 +21640,23 @@
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
 	var axios = __webpack_require__(181);
 
 	var GithubUser = {
-	    getByUsername: function (username) {
+	    getByUsername: function getByUsername(username) {
 	        return axios.get('https://api.github.com/users/' + username);
 	    },
-
-	    getReposByUsername: function (username) {
+	    getReposByUsername: function getReposByUsername(username) {
 	        return axios.get('https://api.github.com/users/' + username + '/repos');
 	    }
-
 	};
 
-	module.exports = GithubUser;
+	exports.default = GithubUser;
 
 /***/ },
 /* 181 */
@@ -23112,58 +23151,70 @@
 /* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var React = __webpack_require__(1);
-	var ReposList = __webpack_require__(207);
+	'use strict';
 
-	function UserProfile(props) {
-	    var userProfile = props.user ? React.createElement(
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ReposList = __webpack_require__(207);
+
+	var _ReposList2 = _interopRequireDefault(_ReposList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var UserProfile = function UserProfile(_ref) {
+	    var user = _ref.user,
+	        repos = _ref.repos;
+
+	    var userProfile = user ? _react2.default.createElement(
 	        'div',
 	        { className: 'row' },
-	        React.createElement(
+	        _react2.default.createElement(
 	            'div',
 	            { className: 'col-lg-4' },
-	            React.createElement('img', { className: 'img-circle', src: props.user.avatar_url, alt: 'avatar', width: '140', height: '140' }),
-	            React.createElement(
+	            _react2.default.createElement('img', { className: 'img-circle', src: user.avatar_url, alt: 'avatar', width: '140', height: '140' }),
+	            _react2.default.createElement(
 	                'h2',
 	                null,
-	                props.user.login
+	                user.login
 	            ),
-	            React.createElement(
+	            _react2.default.createElement(
 	                'p',
 	                null,
-	                props.user.name
+	                user.name
 	            ),
-	            React.createElement(
+	            _react2.default.createElement(
 	                'p',
 	                null,
 	                'Followers: ',
-	                props.user.followers,
+	                user.followers,
 	                ' / Following: ',
-	                props.user.following
+	                user.following
 	            ),
-	            React.createElement(
+	            _react2.default.createElement(
 	                'p',
 	                null,
-	                React.createElement(
+	                _react2.default.createElement(
 	                    'a',
-	                    { className: 'btn btn-default', href: props.user.html_url, role: 'button' },
+	                    { className: 'btn btn-default', href: user.html_url, role: 'button' },
 	                    'View details'
 	                )
 	            )
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	            'div',
 	            { className: 'col-lg-8' },
-	            React.createElement(ReposList, { repos: props.repos })
+	            _react2.default.createElement(_ReposList2.default, { repos: repos })
 	        )
 	    ) : null;
 
 	    return userProfile;
-	}
+	};
 
 	UserProfile.propTypes = {
-	    user: React.PropTypes.object,
-	    repos: React.PropTypes.array
+	    user: _react2.default.PropTypes.object,
+	    repos: _react2.default.PropTypes.array
 	};
 
 	module.exports = UserProfile;
@@ -23172,21 +23223,25 @@
 /* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
+	"use strict";
+
 	var React = __webpack_require__(1);
 
 	var ReposList = React.createClass({
 	    displayName: "ReposList",
 
-	    getInitialState: function () {
+	    getInitialState: function getInitialState() {
 	        return {
 	            reposCount: 0
 	        };
 	    },
-	    componentWillReceiveProps: function (props) {
+	    componentWillReceiveProps: function componentWillReceiveProps(props) {
 	        this.setState({ reposCount: props.repos.length });
 	    },
-	    render: function () {
-	        var repos = this.props.repos.map(function (repo, key) {
+	    render: function render() {
+	        var repos = this.props.repos;
+
+	        var reposList = repos.map(function (repo, key) {
 	            return React.createElement(
 	                "div",
 	                { key: key, className: "thumbnail" },
@@ -23236,7 +23291,7 @@
 	                null,
 	                this.state.reposCount
 	            ),
-	            repos
+	            reposList
 	        );
 	    }
 	});

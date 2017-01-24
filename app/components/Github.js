@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchUser from './SearchUser';
 import UserProfile from './UserProfile';
+
 var Github = React.createClass({
     getInitialState: function(){
         return {
@@ -30,4 +31,4 @@ var Github = React.createClass({
     }
 });
 
-module.exports = Github;
+export default Github;

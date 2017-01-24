@@ -1,5 +1,5 @@
-var React = require('react');
-var GithubUser = require('../services/GithubUser');
+import React from 'react';
+import GithubUser from '../services/GithubUser';
 
 var SearchUser = React.createClass({
     handleSubmit: function(e) {
@@ -7,13 +7,12 @@ var SearchUser = React.createClass({
 
         var username = this.refs.username.value;
         
-        GithubUser.getByUsername(username).then(function(response){
+        GithubUser.getByUsername(username).then((response) => {
             this.props.updateUser(response.data);
-        }.bind(this));
-        
-        GithubUser.getReposByUsername(username).then(function(response){
+        });
+        GithubUser.getReposByUsername(username).then((response) => {
             this.props.updateRepos(response.data);
-        }.bind(this));
+        });
     },
     render: function() {
         return (
